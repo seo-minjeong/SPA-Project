@@ -1,0 +1,15 @@
+.main_content {
+  width: 640px;
+  margin: 0 auto;
+}
+
+.main_content h1 {
+  text-align: right;
+}
+
+.main_content .logo a {
+  text-decoration: none;
+  color: #000; 
+}
+
+/*# sourceMappingURL=index.css.map */
