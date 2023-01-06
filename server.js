@@ -1,4 +1,3 @@
-// servser.js
 // express 서버 만들기
 const express = require("express");
 const path = require("path");
