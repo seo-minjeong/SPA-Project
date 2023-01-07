@@ -3,13 +3,18 @@
 
 @font-face {
   font-family: "Pretendard-Regular";
-  src: url(../font/Pretendard-Regular.woff) format("woff"),
-    url(../font/Pretendard-Regular.woff) format("opentype");
+  src: url(font/Pretendard-Regular.woff) format("woff"),
+    url(font/Pretendard-Regular.woff) format("opentype");
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url(font/Pretendard-Medium.woff) format("woff"),
+    url(font/Pretendard-Medium.woff) format("opentype");
 }
 @font-face {
   font-family: "Pretendard-Bold";
-  src: url(../font/Pretendard-Bold.woff) format("woff"),
-    url(../font/Pretendard-Bold.woff) format("opentype");
+  src: url(font/Pretendard-Bold.woff) format("woff"),
+    url(font/Pretendard-Bold.woff) format("opentype");
 }
 
 a:focus {
@@ -17,7 +22,7 @@ a:focus {
 }
 
 * {
-  font-family: "ClashDisplay-Bold";
+  font-family: "Pretendard-Medium";
   margin: 0;
   padding: 0;
   border: 0;
@@ -26,18 +31,14 @@ a:focus {
 }
 
 html {
-  /* overflow-x: hidden; */
-
   box-sizing: border-box;
   overscroll-behavior: none;
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "ClashDisplay-Medium", "sans-serif";
   background-color: var(--col-light);
   color: var(--col-dark);
-  overscroll-behavior: scroll;
   overflow-x: hidden;
 }
 

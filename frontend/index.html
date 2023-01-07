@@ -5,16 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/index.css"></link>
+    <link rel="stylesheet" href="static/css/reset.css"></link>
     <title>Single Page App</title>
 </head>
 
 <body>
-    <div class="main_content">
-        <h1 class="logo">
-            <a href="/" class="nav__link" data-link>HPNY 2023</a>
-        </h1>
-        <div id="app">
-            <a href="/posts" class="nav__link" data-link>게시글 작성하기</a>
+    <div class="wrap">
+        <header class="header">
+            <h1 class="logo">
+                <a href="/" class="nav__link" data-link>HPNY 2023</a>
+            </h1>
+        </header>
+        <div id="app" class="wrap_content">
+            <button type="button" class="add_btn">게시물 작성하기</button>
+            <ul class="main_content">
+                <li class="post">
+                    <div class="post_img">
+                        <img src="https://images.unsplash.com/photo-1672588159308-3c2c111884b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzOTU0MDd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMwNjY1MzA&ixlib=rb-4.0.3&q=80&w=400" alt="랜덤 이미지" />
+                    </div>
+                    <div>
+                        <p class="title">2023 화이팅</p>
+                        <p class="content">화이팅입니다요</p>
+                    </div>
+                </li>
+            </ul>
         </div>  
     </div>
     <script type="module" src="static/js/index.js"></script>
