@@ -4,11 +4,6 @@ const router = express.Router(); // 라우터 메소드 할당
 const url = "http://43.201.103.199/posts";
 router.use(logger);
 
-async function axiosExample() {
-  const response = await axios.get("http://43.201.103.199/posts");
-  const { data } = response;
-}
-
 router.get("/", async (req, res) => {
   axios({
     method: "get",
@@ -18,6 +13,8 @@ router.get("/", async (req, res) => {
     res.render("index", { posts: posts });
   });
 });
+
+// router.post("/posts", async (req, res) => {});
 
 router.get("/posts/new", (req, res) => {
   res.render("posts/new");
@@ -36,14 +33,14 @@ router.get("/posts/new", (req, res) => {
 //     });
 //     const product = apiResponse.data.data.posts;
 //     response.json(product);
-//     // res.render(
-//     //   "posts/view",
-//     //   {
-//     //     title: title,
-//     //     content: content,
-//     //   },
-//     //   console.log(req.body)
-//     // );
+//     res.render(
+//       "posts/view",
+//       {
+//         title: title,
+//         content: content,
+//       },
+//       console.log(req.body)
+//     );
 //   })
 //   .put((req, res) => {
 //     let id = posts.length - 1;
