@@ -9,7 +9,7 @@ export default class extends AbstractView {
   async getHtml() {
     return `
           <section class="detail_section">
-            
+            <p>뭐없음</p>
           </section>
         `;
   }

@@ -2,6 +2,7 @@ import Dashboard from "./views/Dashboard.js";
 import Posts from "./views/Posts.js";
 import Detail from "./views/Detail.js";
 
+// 라우터 설정
 const pathToRegex = (path) =>
   new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
@@ -27,7 +28,7 @@ const router = async () => {
   const routes = [
     { path: "/", view: Dashboard },
     { path: "/posts", view: Posts },
-    { path: "/detail", view: Detail },
+    { path: ":id", view: Detail },
   ];
 
   // Test each route for potential match
