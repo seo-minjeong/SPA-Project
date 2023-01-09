@@ -1,77 +1,90 @@
 const express = require("express");
+const axios = require("axios");
 const router = express.Router(); // 라우터 메소드 할당
+const url = "http://43.201.103.199/posts";
 router.use(logger);
 
-router.get("/", (req, res) => {
-  res.render("index");
+async function axiosExample() {
+  const response = await axios.get("http://43.201.103.199/posts");
+  const { data } = response;
+}
+
+router.get("/", async (req, res) => {
+  axios({
+    method: "get",
+    url: url,
+  }).then((apiResponse) => {
+    const posts = apiResponse.data.data.posts;
+    res.render("index", { posts: posts });
+  });
 });
-
-var axios = require("axios");
-
-var config = {
-  method: "get",
-  url: "http://43.201.103.199/posts",
-  headers: {},
-};
-
-axios(config)
-  .then(function (response) {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
-router
-  .route("/posts")
-  .get((req, res) => {
-    res.render("posts/index", {
-      title: "제몱",
-      content: "Express",
-    });
-  })
-  .post((req, res) => {
-    const title = req.body.title;
-    const content = req.body.content;
-
-    posts.push({ title: title, content: content });
-    res.redirect(`/posts/${posts.length - 1}`);
-    console.log("post");
-  });
 
 router.get("/posts/new", (req, res) => {
   res.render("posts/new");
 });
 
 // 글보기/삭제/추가
-router
-  .route("/posts/:id")
-  .get((req, res) => {
-    const select = req.params.id;
-    const title = posts[select].title;
-    const content = posts[select].content;
+// router
+//   .route("/posts/:id")
+//   .get(async (req, res) => {
+//     const postId = req.params.postId;
 
-    // res.send(`Get 게시글 ID ${select} ${content}`);
-    res.render("posts/view", {
-      title: title,
-      content: content,
-    });
-  })
-  .put((req, res) => {
-    const id = posts.length - 1;
+//     const apiResponse = await axios.get(url, {
+//       params: {
+//         postId: postId,
+//       },
+//     });
+//     const product = apiResponse.data.data.posts;
+//     response.json(product);
+//     // res.render(
+//     //   "posts/view",
+//     //   {
+//     //     title: title,
+//     //     content: content,
+//     //   },
+//     //   console.log(req.body)
+//     // );
+//   })
+//   .put((req, res) => {
+//     let id = posts.length - 1;
+//     res.render("posts/view");
+//   })
+//   .delete((req, res) => {
+//     console.log(req.user, "얍2");
+//     res.render("posts/view");
+//   });
 
-    res.render("posts/view");
-  })
-  .delete((req, res) => {
-    console.log(req.user, "얍2");
-    res.render("posts/view");
-  });
+// router
+//   .route("/posts/:id")
+//   .get((req, res) => {
+//     let select = req.params.id;
+//     let title = posts[select].title;
+//     let content = posts[select].content;
+
+//     res.render(
+//       "posts/view",
+//       {
+//         title: title,
+//         content: content,
+//       },
+//       console.log(req.body)
+//     );
+//   })
+//   .put((req, res) => {
+//     let id = posts.length - 1;
+
+//     res.render("posts/view");
+//   })
+//   .delete((req, res) => {
+//     console.log(req.user, "얍2");
+//     res.render("posts/view");
+//   });
 
 const posts = [
-  { id: 0, title: "안녕", content: "내용1" },
-  { id: 1, title: "하이", content: "내용2" },
-  { id: 2, title: "헬로우", content: "내용3" },
-  { id: 3, title: "헬로우", content: "내용4" },
+  { id: 0, title: "제목1", content: "내용1" },
+  { id: 1, title: "제목2", content: "내용2" },
+  { id: 2, title: "제목3", content: "내용3" },
+  { id: 3, title: "제목4", content: "내용4" },
 ];
 
 router.param("id", (req, res, next, id) => {
@@ -86,13 +99,24 @@ function logger(req, res, next) {
   next();
 }
 
-// 글 수정
-router.get("/edit/:id", (req, res) => {
-  // DB에서 게시글 불러오기
-  req.params.id = parseInt(req.params.id);
-  db.collection("post").findOne({ _id: req.params.id }, (err, result) => {
-    res.render("edit.ejs", { edit: result });
-  });
-});
+// 결과값 가져오기
+// router.post("/posts/add", (req, res) => {
+//   let title = req.body.title;
+//   let content = req.body.content;
+//   res.send(`id : ${title}, pw : ${content}`);
+// });
+
+// res.send(`Get 게시글 ID ${select} ${content}`);
+
+// 글보기/삭제/추가 나열
+// router.get("/posts/:id", (req, res) => {
+//   res.send(`get 게시글${req.params.id}`);
+// });
+// router.put("/posts/:id", (req, res) => {
+//   res.send(`update  게시글${req.params.id}`);
+// });
+// router.delete("/posts/:id", (req, res) => {
+//   res.send(`delete 게시글 삭제 ${req.params.id}`);
+// });
 
 module.exports = router;
