@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spa 프로젝트</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <header class="header">
+            <a class="back_btn" onclick="history.back()">
+                <img src="https://hpny-1.s3.ap-northeast-2.amazonaws.com/icon_chevron_left.svg" id="back-icon">
+            </a>
+            <h1 class="logo">
+                <img src="/img/logo.png" alt="로고">
+                <a href="/" class="nav_link" data-link>HPNY 2023</a>
+            </h1>
+        </header>
+        <main id="app" class="wrap_content">
+            <section class="detail_section">
+                <div class="random_img">
+                    <img src="https://images.unsplash.com/photo-1672588159308-3c2c111884b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzOTU0MDd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMwNjY1MzA&ixlib=rb-4.0.3&q=80&w=400" alt="랜덤 이미지">
+                </div>
+                <strong class="title"><%= title %></strong>
+                <time datetime="2023-01-08" class="date">2023. 01. 08</time>
+                <p class="content"><%= content %></p>
+                <div class="btn_wrap">
+                    <button type="button" class="edit_btn">수정</button>
+                    <button type="button" class="del_btn">삭제</button>
+                </div>
+                <ul class="comment_list_area">
+                    <li class="comment_list">
+                        <p class="comment">귀여워</p>
+                        <button type="button" class="comment_del_btn">삭제</button>
+                    </li>
+                </ul>
+                <div class="comment_area">
+                    <input type="text" name="comment" id="comment" class="comment_input" placeholder="댓글을 작성해주세요."/>
+                    <button type="button" class="comment_add_btn">게시</button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
