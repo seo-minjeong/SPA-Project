@@ -3,44 +3,85 @@ const axios = require("axios");
 const router = express.Router(); // 라우터 메소드 할당
 const url = "http://43.201.103.199/posts";
 router.use(logger);
+// https://any-ting.tistory.com/14
+// https://thoughtful-arch-8c2.notion.site/VanillaJS-SPA-826e63925d7c4e2e8d27d7f03fef4371
+// https://velog.io/@nick2866/node.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EC%83%9D%EC%84%B1
+// https://reflectoring.io/tutorial-guide-axios/
 
-router.get("/", async (req, res) => {
-  axios({
-    method: "get",
-    url: url,
-  }).then((apiResponse) => {
-    const posts = apiResponse.data.data.posts;
-    res.render("index", { posts: posts });
+router
+  .route("/")
+  .get(async (req, res) => {
+    axios({
+      method: "get",
+      url: url,
+    }).then((apiResponse) => {
+      const posts = apiResponse.data.data.posts;
+      // res.json(posts);
+      res.render("index", { posts: posts });
+    });
+  })
+  .post(async (req, res) => {
+    let req_data = {
+      image: req.body.image,
+      title: req.body.title,
+      content: req.body.content,
+      // createdAt:
+      // updatedAt
+    };
+
+    axios({
+      method: "post",
+      url: url,
+      data: req_data,
+    }).then((apiResponse) => {
+      const posts = apiResponse.data.data.posts;
+      res.json(posts);
+      // res.render("posts/index", {posts: posts});
+    });
+
+    // res.redirect(`/posts/${posts.length - 1}`);
+    // posts.push(req_data);
   });
-});
-
-// router.post("/posts", async (req, res) => {});
 
 router.get("/posts/new", (req, res) => {
   res.render("posts/new");
 });
 
 // 글보기/삭제/추가
+// router.get("/posts/:postId", (req, res) => {
+//   res.send("안농");
+// });
+
+router.get("/posts/:postId", (req, res) => {
+  const postId = req.params.postId;
+
+  axios.get(`http://43.201.103.199/post/${postId}`).then((apiResponse) => {
+    const selectedData = apiResponse.data.data;
+    // res.json(selectedData);
+    res.render("posts/view", { item: selectedData });
+  });
+});
+
 // router
-//   .route("/posts/:id")
+//   .route("/posts/:postId")
 //   .get(async (req, res) => {
 //     const postId = req.params.postId;
 
-//     const apiResponse = await axios.get(url, {
+//     const apiResponse = await axios.get(`http://43.201.103.199/post/`, {
 //       params: {
 //         postId: postId,
 //       },
 //     });
-//     const product = apiResponse.data.data.posts;
-//     response.json(product);
-//     res.render(
-//       "posts/view",
-//       {
-//         title: title,
-//         content: content,
-//       },
-//       console.log(req.body)
-//     );
+//     const product = apiResponse.data.data.post;
+//     res.send("안농");
+//     // res.render(
+//     //   "posts/view",
+//     //   {
+//     //     title: title,
+//     //     content: content,
+//     //   },
+//     //   console.log(req.body)
+//     // );
 //   })
 //   .put((req, res) => {
 //     let id = posts.length - 1;
@@ -51,6 +92,7 @@ router.get("/posts/new", (req, res) => {
 //     res.render("posts/view");
 //   });
 
+//
 // router
 //   .route("/posts/:id")
 //   .get((req, res) => {
@@ -77,15 +119,15 @@ router.get("/posts/new", (req, res) => {
 //     res.render("posts/view");
 //   });
 
-const posts = [
-  { id: 0, title: "제목1", content: "내용1" },
-  { id: 1, title: "제목2", content: "내용2" },
-  { id: 2, title: "제목3", content: "내용3" },
-  { id: 3, title: "제목4", content: "내용4" },
-];
+// const posts = [
+//   {id: 0, title: "제목1", content: "내용1"},
+//   {id: 1, title: "제목2", content: "내용2"},
+//   {id: 2, title: "제목3", content: "내용3"},
+//   {id: 3, title: "제목4", content: "내용4"},
+// ];
 
-router.param("id", (req, res, next, id) => {
-  req.posts = posts[id];
+router.param("posts", (req, res, next, posts) => {
+  req.posts = posts[posts];
   next();
 });
 

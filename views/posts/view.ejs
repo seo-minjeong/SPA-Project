@@ -24,11 +24,11 @@
         <main id="app" class="wrap_content">
             <section class="detail_section">
                 <div class="random_img">
-                    <img src="https://images.unsplash.com/photo-1672588159308-3c2c111884b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzOTU0MDd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMwNjY1MzA&ixlib=rb-4.0.3&q=80&w=400" alt="랜덤 이미지">
+                    <img src="<%=item.post.image%>" alt="랜덤 이미지">
                 </div>
-                <strong class="title"><%= title %></strong>
-                <time datetime="2023-01-08" class="date">2023. 01. 08</time>
-                <p class="content"><%= content %></p>
+                <strong class="title"><%= item.post.title %></strong>
+                <time datetime="2023-01-08" class="date"><%= item.post.createdAt %></time>
+                <p class="content"><%= item.post.content %></p>
                 <div class="btn_wrap">
                     <button type="button" class="edit_btn">수정</button>
                     <button type="button" class="del_btn">삭제</button>
