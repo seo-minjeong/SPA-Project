@@ -52,6 +52,7 @@ router.get("/posts/new", (req, res) => {
 //   res.send("안농");
 // });
 
+// 글 상세페이지 조회
 router.get("/posts/:postId", (req, res) => {
   const postId = req.params.postId;
 
@@ -61,6 +62,30 @@ router.get("/posts/:postId", (req, res) => {
     res.render("posts/view", { item: selectedData });
   });
 });
+
+// const delBtn = document.querySelector(".comment_del_btn");
+
+// delBtn.addEventListener("click", () => {
+//   post("/delete", (req, res) => {
+//     if (CheckAuth(req, res)) {
+//       req.database.query(
+//         `DELETE FROM post WHERE id = ${req.params.commentId};`,
+//         (err) => {
+//           if (err) throw err;
+//           res.status(200).redirect("/");
+//         }
+//       );
+//     }
+//   });
+// });
+
+// 새롭게 추가한 삭제 버튼 이벤트 핸들러
+// $(".del_btn").click(function (e) {
+//   delete ("/posts/:id",
+//   (req, res) => {
+//     res.send(`delete 게시글 삭제 ${req.params.id}`);
+//   });
+// });
 
 // router
 //   .route("/posts/:postId")
