@@ -37,7 +37,7 @@
                     <% for(var i = 0; i < item.comments.length; i++) { %>
                         <li class="comment_list">
                             <p class="comment"><%=item.comments[i].content%></p>
-                            <button type="button" class="comment_del_btn">삭제</button>
+                            <button type="button" class="comment_del_btn" onClick={deleteClick}>삭제</button>
                         </li>
                     <%}%>
                 </ul>

@@ -7,7 +7,6 @@ router.use(logger);
 // https://thoughtful-arch-8c2.notion.site/VanillaJS-SPA-826e63925d7c4e2e8d27d7f03fef4371
 // https://velog.io/@nick2866/node.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EC%83%9D%EC%84%B1
 // https://reflectoring.io/tutorial-guide-axios/
-
 router
   .route("/")
   .get(async (req, res) => {
@@ -62,6 +61,18 @@ router.get("/posts/:postId", (req, res) => {
     res.render("posts/view", { item: selectedData });
   });
 });
+
+
+// 댓글 작성하기
+// router.post("/comment/:postId", (req, res) => {
+//   const postId = req.params.postId;
+
+//   axios.get(`http://43.201.103.199/comment/${postId}`).then((apiResponse) => {
+//     const selectedData = apiResponse.data.data;
+//     // res.json(selectedData);
+//     res.render("posts/view", { item: selectedData });
+//   });
+// });
 
 // const delBtn = document.querySelector(".comment_del_btn");
 
