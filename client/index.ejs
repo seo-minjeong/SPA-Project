@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <title>Spa 프로젝트</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <header class="header">
+            <h1 class="logo">
+                <img src="/img/logo.png" alt="로고">
+                <a href="/" class="nav_link" data-link>HPNY 2023</a>
+            </h1>
+        </header>
+        <main id="app" class="wrap_content">
+            <div class="dashboard_section">
+                <a href="/posts/new" class="nav_link post_btn" data-link>게시물 작성하기</a>
+                <ul class="main_content">
+                    <% for(var i=0; i<posts.length; i++) { %>
+                        <li class="post">
+                            <a href="posts/<%=posts[i].postId%>">
+                                <div class="post_img">
+                                    <img src="<%=posts[i].image%>" alt="랜덤 이미지">
+                                </div>
+                                <div class="text_wrap">
+                                    <strong class="title">
+                                        <%=posts[i].title%>
+                                    </strong>
+                                    <p class="content">
+                                        <%=posts[i].content%>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    <%}%>
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
