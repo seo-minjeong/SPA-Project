@@ -60,11 +60,12 @@ export default class Show extends AbstractView {
 
     const newcomment = document.createElement("div");
     newcomment.setAttribute("id", "ShowComment");
+    newcomment.setAttribute("class", "comment_list");
     newcomment.innerHTML = `
-        <div id="ShowCommentItem">
-            ${data.data.content}
+        <div id="ShowCommentItem" class="comment">
+          ${data.data.content}
         </div>
-        <button id="ShowCommentDeleteBtn" data-key=${data.data.commentId} data-link="/show/${POSTID}">X</button>
+        <button id="ShowCommentDeleteBtn" data-key=${data.data.commentId} data-link="/show/${POSTID}" class="comment_del_btn">삭제</button>
         `;
     const wrapper = document.getElementById("ShowCommentWrapper");
     wrapper.appendChild(newcomment);
@@ -93,35 +94,42 @@ export default class Show extends AbstractView {
             <div id="ShowImage" class="random_img">
                 <img src="${post.image}" alt="랜덤 이미지">
             </div>
-            <strong id="ShowTitle" class="title">${post.title}</strong>
-            <p>작성: ${post.createdAt.substr(0, 10)} ${post.createdAt.substr(
+            <div class="title_line">
+                <strong id="ShowTitle" class="title">${post.title}</strong>
+                <p>작성: ${post.createdAt.substr(
+                  0,
+                  10
+                )} ${post.createdAt.substr(
       11,
       5
     )} | 수정: ${post.updatedAt.substr(0, 10)} ${post.updatedAt.substr(
       11,
       5
     )}<br/><br/>
-            </p>
+                </p>
+            </div>
             <p class="content">${post.content}</p>
             <div id="ShowBtns" class="btn_wrap">
                 <button id="ShowEditBtn" class="edit_btn" data-link="/edit/${POSTID}">수정</button>
                 <button id="ShowDeleteBtn" class="del_btn" data-link ="/">삭제</button>
             </div>
             <ul id="ShowCommentWrapper" class="comment_list_area">
-            ${comments.map(
-              (elm) => `
+            ${comments
+              .map(
+                (elm) => `
                 <li id="ShowComment" class="comment_list">
                     <p id="ShowCommentItem" class="comment">${elm.content}</p>
                     <button id="ShowCommentDeleteBtn" data-key=${elm.commentId} class="comment_del_btn">삭제</button>
                 </li>
-            `
-            )}
+              `
+              )
+              .join("")}
             </ul>
             <div id="ShowWrite" class="comment_area">
                 <input type="text" id="ShowWriteContent" class="comment_input" placeholder="댓글을 작성해주세요."/>
-                <button id="ShowWriteBtn">게시</button>
+                <button id="ShowWriteBtn" class="comment_add_btn">게시</button>
             </div>
         </section>
-        `;
+    `;
   }
 }

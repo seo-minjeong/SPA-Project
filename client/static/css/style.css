@@ -131,7 +131,7 @@ body::-webkit-scrollbar {
   border-radius: 5px;
 }
 .post_section .content_area {
-  height: 250px;
+  height: 200px;
 }
 .post_section .add_btn {
   width: 100%;
@@ -152,6 +152,13 @@ body::-webkit-scrollbar {
   display: block;
   margin-top: 10px;
   font-size: 20px;
+}
+.detail_section .title_line {
+  display: flex;
+  align-items: baseline;
+}
+.detail_section .title_line p {
+  margin-left: auto;
 }
 .detail_section .date {
   display: block;
@@ -199,7 +206,7 @@ body::-webkit-scrollbar {
   margin-top: 20px;
 }
 .detail_section .comment {
-  width: 570px;
+  width: 500px;
   font-size: 16px;
 }
 .detail_section .comment_del_btn {
@@ -210,12 +217,13 @@ body::-webkit-scrollbar {
 }
 .detail_section .comment_area {
   position: fixed;
-  bottom: 30px;
+  bottom: 5px;
   display: flex;
   align-items: center;
-  width: 640px;
+  width: 580px;
   height: 50px;
   padding: 5px 15px;
+  background: #fff;
   border: 1px solid #c7c7c7;
   border-radius: 10px;
 }
