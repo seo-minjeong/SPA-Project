@@ -9,6 +9,7 @@ export default class List extends AbstractView {
     this.setBackLink();
   }
 
+  // 게시물 리스트 가져오기
   async getList() {
     const res = await fetch(BASE_URL + "/posts");
     const data = await res.json();

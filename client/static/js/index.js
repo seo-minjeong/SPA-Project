@@ -1,7 +1,7 @@
 import List from "../views/List.js";
 import Edit from "../views/Edit.js";
 import Show from "../views/Show.js";
-// import NotFound from "../views/NotFound.js";
+import NotFound from "../views/NotFound.js";
 
 /*router*/
 const navigateTo = (url) => {
@@ -25,12 +25,12 @@ const router = async () => {
 
   let match = potentialMatches.find((potentialMatch) => potentialMatch.isMatch);
 
-  // if (!match) {
-  //   match = {
-  //     route: { path: "404-not-found", view: NotFound },
-  //     isMatch: true,
-  //   };
-  // }
+  if (!match) {
+    match = {
+      route: { path: "404-not-found", view: NotFound },
+      isMatch: true,
+    };
+  }
 
   const view = new match.route.view();
   document.querySelector("#App").innerHTML = await view.getHtml();
