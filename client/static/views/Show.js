@@ -18,11 +18,6 @@ export default class Show extends AbstractView {
     const data = await res.json();
   }
 
-  cancleDelete() {
-    const AlertMessage = document.getElementById("ShowAlert");
-    AlertMessage.style.display = "none";
-  }
-
   async executeDelete() {
     const AlertMessage = document.getElementById("ShowAlert");
     await this.deletePost();
