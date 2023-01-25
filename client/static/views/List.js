@@ -33,12 +33,12 @@ export default class List extends AbstractView {
             (elm, key) =>
               `
                 <li class="post" data-link="/show/${elm.postId}">
-                    <div class="post_img">
+                    <div class="post_img" data-link="/show/${elm.postId}">
                         <img src=${elm.image} alt="랜덤 이미지" loading=${
                 key > 3 ? "lazy" : "eager"
               }>
                     </div>
-                    <div class="text_wrap">
+                    <div class="text_wrap" data-link="/show/${elm.postId}">
                         <strong class="title">
                             ${elm.title}
                         </strong>

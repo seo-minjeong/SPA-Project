@@ -8,6 +8,7 @@ body::-webkit-scrollbar {
 .wrap {
   position: relative;
   width: 640px;
+  height: 100vh;
   margin: 0 auto;
   padding: 0 30px;
   background: #fff;
@@ -70,14 +71,15 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 .main_content .post_img {
-  min-width: 20%;
+  flex-basis: min-content;
+  min-width: 23%;
   height: 120px;
-  margin-right: 50px;
   border-radius: 10px;
   overflow: hidden;
 }
 .main_content .text_wrap {
   width: 100%;
+  margin-left: 50px;
 }
 .main_content .title {
   font-size: 18px;
@@ -129,12 +131,12 @@ body::-webkit-scrollbar {
   border-radius: 5px;
 }
 .post_section .content_area {
-  height: 450px;
+  height: 250px;
 }
 .post_section .add_btn {
   width: 100%;
   height: 50px;
-  margin-top: 50px;
+  margin-top: 15px;
   font-size: 18px;
   background:#764bea;
   border-radius: 10px;
@@ -142,7 +144,7 @@ body::-webkit-scrollbar {
 }
 
 /* 게시물 상세페이지 */
-.detail_section .random_img {
+.random_img {
   width: 100%;
   height: 300px;
 }

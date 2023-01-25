@@ -49,7 +49,7 @@ export default class Edit extends AbstractView {
       .getElementsByTagName("input")[0].value;
 
     const editContent = document
-      .getElementById("EditContent") 
+      .getElementById("EditContent")
       .getElementsByTagName("textarea")[0].value;
 
     const res = await fetch(BASE_URL + "/post/" + POSTID, {
@@ -88,6 +88,7 @@ export default class Edit extends AbstractView {
         image: image,
       }),
     });
+
     const data = await res.json();
   }
 
@@ -99,17 +100,20 @@ export default class Edit extends AbstractView {
     }
 
     return `
-        <div id="Edit">
-            <div id="EditImage">
-            <img id="EditImageChange" src=${IMAGEURL}></img>
+        <div class="post_section" id="Edit">
+            <div id="EditImage" class="random_img">
+                <img id="EditImageChange" src=${IMAGEURL}></img>
             </div>
-            <div id="EditTitle">
-                <input type="text" placeholder="제목" value="${title}"></input>
+            <div class="input_wrap" id="EditTitle">
+                <label for="title">제목</label>
+                <input type="text" class="title_input" value="${title}" minlength="1" maxlength="30" placeholder="글 제목을 입력해주세요"
+                    value="" required>
             </div>
-            <div id="EditContent">
-                <textarea placeholder="내용을 입력하세요...">${content}</textarea>
+            <div class="input_wrap" id="EditContent">
+                <label for="content">내용</label>
+                <textarea class="content_area" cols="30" rows="10" placeholder="글 내용을 입력해주세요" required>${content}</textarea>
             </div>
-            <button id="EditAddBtn" data-link="/">등록하기</button>
+            <button type="submit" id="EditAddBtn" class="submit-button add_btn" data-link="/" >등록하기</button>
         </div>
       `;
   }
